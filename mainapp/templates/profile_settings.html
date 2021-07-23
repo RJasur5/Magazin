@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="jumbotron">
+        <h5>Profile settings page</h5>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div style="text-align: center;">
+                <a href="{% url 'profile'%}" class="btn btn-success">&#8592 Back to profile</a>
+                <br>
+                <br>
+                <img class="card-img-buttom" src="{{request.user.customer.image.url}}" width="200" height="200">
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ p_form.as_p }}
+                <input type="submit" class="btn btn-primary" value="Save profile">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+
+{% endblock %}
